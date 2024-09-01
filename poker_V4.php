@@ -45,10 +45,10 @@ foreach ($players[0] as $card) {      // 看index就不看value了 ，所以沒�
     echo '<tr />';
 
     foreach ($player as $card) {
-      echo "<td>{$card}</td>";                         // 檢查用
-      // $launch = $launchs[(int)($card / 13)];        // 花色
-      // $value = $values[$card % 13];                 // 牌面
-      // echo "<td>{$launch}{$value}</font></td>";   
+      // echo "<td>{$card}</td>";                         // 檢查用
+      $launch = $launchs[(int)($card / 13)];        // 花色
+      $value = $values[$card % 13];                 // 牌面
+      echo "<td>{$launch}{$value}</font></td>";
     }
   }
 
