@@ -1,0 +1,60 @@
+<!-- <h1>Register</h1>
+<hr> -->
+<!-- 以post的方式進行資料傳遞，就不會出現在URL上，如果沒有指定用POST預設值就是GET，就會出現在URL -->
+<!-- <form action="hash.php" method="post"> 
+    Account: <input name="account"><br>
+    Password: <input type="password" name="passwd"><br>
+    Name: <input name="name"><br>
+    <input type="submit" value="Register">
+</form> -->
+
+
+
+
+<!-- 如果帳號有重複直接跳出提醒，配合檔案CheckAccount -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    var isDataValid = false;    // 前端檢查就是false也不用往後端送了
+    function checkAccount() {
+        $('#mesg').load('checkAccount.php?account=' + $('#account').val());    // 檢查帳號有無重複
+    }
+    function checkFormData() { 
+        return true;
+    }
+</script>
+<h1>Register</h1>
+<hr>
+<form action="hash.php" method="post" onsubmit="return checkFormData();">
+    Account: <input name="account" id="account" onblur="checkAccount()"><span id="mesg"></span><br>
+    Password: <input type="password" name="passwd"><br>
+    Name: <input name="name"><br>
+    <input type="submit" value="Register">
+</form> -->
+
+
+
+
+<!-- 註冊表單讓使用者可以使用頭像，另外頭像能存在資料表中 -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    var isDataValid = false;    // 前端檢查就是false也不用往後端送了
+    function checkAccount() {
+        $('#mesg').load('checkAccount.php?account=' + $('#account').val());    // 檢查帳號有無重複
+    }
+    function checkFormData() { 
+        return true;
+    }
+</script>
+<h1>Register</h1>
+<hr>
+<form action="hash.php" 
+    enctype="multipart/form-data"
+    method="post" 
+    onsubmit="return checkFormData();">
+    Account: <input name="account" id="account" onblur="checkAccount()"><span id="mesg"></span><br>
+    Password: <input type="password" name="passwd"><br>
+    Name: <input name="name"><br>
+    Icon: <input type="file" name="icon"><br>
+    <input type="submit" value="Register">
+</form> 
