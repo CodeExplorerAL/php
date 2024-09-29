@@ -1,0 +1,32 @@
+<!-- <form action="error.php">
+  Account: <input name="account"><br> -->
+  <!-- value要設定才能讓後端接收到(看url可知曉) -->
+  <!-- Gender: <input type="radio" name="gender" value="m" checked>Male  -->
+  <!-- <input type="radio" name="gender" value="f">Female<br> -->
+  <!-- 如果後端是php要加上[]，看hobby後面 ，若沒放得出結果是string(1) "5"，有放就變成array(3) { [0]=> string(1) "2" [1]=> string(1) "4" [2]=> string(1) "5" }，才能取得它選取甚麼-->
+  <!-- Hobby: <input type="checkbox" name="hobby[]" value="1">
+      <input type="checkbox" name="hobby[]" value="2">
+      <input type="checkbox" name="hobby[]" value="3"><br>
+      <input type="checkbox" name="hobby[]" value="4">
+      <input type="checkbox" name="hobby[]" value="5">
+      <input type="checkbox" name="hobby[]" value="6"><br>
+  <input type="submit" value="test">
+</form> -->
+
+
+
+<!-- <form method="post" action="error.php" enctype="multipart/form-data">
+  File: <input type="file" name="upload"><br>
+  <input type="submit" value="Upload">
+</form> -->
+
+
+
+<form method="post" action="error.php" enctype="multipart/form-data">
+  <!-- 陣列符號[]畫上去才不會後蓋前 -->
+  File: <input type="file" name="upload[]"><br>
+  File: <input type="file" name="upload[]"><br>
+  File: <input type="file" name="upload[]"><br>
+  File: <input type="file" name="upload[]"><br>
+  <input type="submit" value="Upload">
+</form>
