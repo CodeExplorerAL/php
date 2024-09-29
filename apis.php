@@ -94,3 +94,88 @@ function createTWIdByAreaCodeAndGender($areaCode, $gender)
 
   return $id;
 }
+
+
+
+
+
+
+// 物件導向操作
+class Student
+{
+  private $name, $ch, $eng, $math;    // 只能在這個類別內部使用，外部無法直接存取
+
+  //建構式: 初始化屬性
+  public function __construct($name, $ch, $eng, $math)
+  {
+    // 初始化
+    $this->name = $name;
+    $this->ch = $ch;
+    $this->eng = $eng;
+    $this->math = $math;
+  }
+
+  // 外部操作
+  // 取得它的名字 return
+  public function getName()
+  {
+    return $this->name;
+  }
+  // 計算總成績 return
+  public function sum()
+  {
+    return $this->ch + $this->eng + $this->math;
+  }
+  // 取得平均數 return
+  public function avg()
+  {
+    return $this->sum() / 3;
+  }
+  // 修改成績
+  public function setMath($math)
+  {
+    $this->math =  $math;
+  }
+}
+
+// 與檔案44 登入成功到主畫面有關，原生方法。朱老師會教magic神奇寫法，方便但效能沒有原生好
+
+// 建構
+class Member
+{
+  private $id, $account, $name, $passwd, $icon, $icontype;
+  public function __construct($id, $account, $passwd, $name, $icon, $icontype)
+  { // 有順序
+    $this->id = $id;
+    $this->account = $account;
+    $this->name = $name;
+    $this->passwd = $passwd;
+    $this->icon = $icon;
+    $this->icontype = $icontype;
+  }
+  // 針對命名屬性存取
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function getAccount()
+  {
+    return $this->account;
+  }
+  public function getName()
+  {
+    return $this->name;
+  }
+  public function getPasswd()
+  {
+    return $this->passwd;
+  }
+  public function getIcon()
+  {
+    return $this->icon;
+  }
+  public function getIcontype()
+  {
+    return $this->icontype;
+  }
+}
