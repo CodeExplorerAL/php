@@ -35,65 +35,65 @@ define('LETTERS', 'ABCDEFGHJKLMNPQRSTUVXYWZIO');
 
 
 // 身分證驗證法，可查公式
-function checkTWID($id)
-{
-  if (preg_match('/^[A-Z][12][0-9]{8}$/', $id)) {
-    $c1 = substr($id, 0, 1);
-    $a12 = strpos(LETTERS, $c1) + 10;
-    $a1 = (int)($a12 / 10);
-    $a2 = $a12 % 10;
-    $n1 = substr($id, 1, 1);
-    $n2 = substr($id, 2, 1);
-    $n3 = substr($id, 3, 1);
-    $n4 = substr($id, 4, 1);
-    $n5 = substr($id, 5, 1);
-    $n6 = substr($id, 6, 1);
-    $n7 = substr($id, 7, 1);
-    $n8 = substr($id, 8, 1);
-    $n9 = substr($id, 9, 1);
+// function checkTWID($id)
+// {
+//   if (preg_match('/^[A-Z][12][0-9]{8}$/', $id)) {
+//     $c1 = substr($id, 0, 1);
+//     $a12 = strpos(LETTERS, $c1) + 10;
+//     $a1 = (int)($a12 / 10);
+//     $a2 = $a12 % 10;
+//     $n1 = substr($id, 1, 1);
+//     $n2 = substr($id, 2, 1);
+//     $n3 = substr($id, 3, 1);
+//     $n4 = substr($id, 4, 1);
+//     $n5 = substr($id, 5, 1);
+//     $n6 = substr($id, 6, 1);
+//     $n7 = substr($id, 7, 1);
+//     $n8 = substr($id, 8, 1);
+//     $n9 = substr($id, 9, 1);
 
-    $sum = $a1 * 1 + $a2 * 9 + $n1 * 8 + $n2 * 7 + $n3 * 6 + $n4 * 5 + $n5 * 4 + $n6 * 3 + $n7 * 2 + $n8 * 1 + $n9 * 1;
-    $isRight = $sum % 10 == 0;
-  }
-  return $isRight;
-}
+//     $sum = $a1 * 1 + $a2 * 9 + $n1 * 8 + $n2 * 7 + $n3 * 6 + $n4 * 5 + $n5 * 4 + $n6 * 3 + $n7 * 2 + $n8 * 1 + $n9 * 1;
+//     $isRight = $sum % 10 == 0;
+//   }
+//   return $isRight;
+// }
 
 
 
-// 身分證驗證法延伸功能 - 身份證字號產生器
-function createTWIdByRandown()
-{
-  $area = substr(LETTERS, rand(0, 25), 1);
-  return createTWIdByAreaCode($area);
-}
+// // 身分證驗證法延伸功能 - 身份證字號產生器
+// function createTWIdByRandown()
+// {
+//   $area = substr(LETTERS, rand(0, 25), 1);
+//   return createTWIdByAreaCode($area);
+// }
 
-function createTWIdByAreaCode($areaCode = 'A')
-{
-  $gender = rand(0, 1) == 0;
-  return createTWIdByAreaCodeAndGender($areaCode, $gender);
-}
+// function createTWIdByAreaCode($areaCode = 'A')
+// {
+//   $gender = rand(0, 1) == 0;
+//   return createTWIdByAreaCodeAndGender($areaCode, $gender);
+// }
 
-function createTWIdByGender($gender = true)
-{
-  $area = substr(LETTERS, rand(0, 25), 1);
-  return createTWIdByAreaCodeAndGender($area, $gender);
-}
+// function createTWIdByGender($gender = true)
+// {
+//   $area = substr(LETTERS, rand(0, 25), 1);
+//   return createTWIdByAreaCodeAndGender($area, $gender);
+// }
 
-function createTWIdByAreaCodeAndGender($areaCode, $gender)
-{
-  $id = $areaCode;
-  $id .= $gender ? '1' : '2';
-  for ($i = 0; $i < 7; $i++) $id .= rand(0, 9);
+// function createTWIdByAreaCodeAndGender($areaCode, $gender)
+// {
+//   $id = $areaCode;
+//   $id .= $gender ? '1' : '2';
+//   for ($i = 0; $i < 7; $i++) $id .= rand(0, 9);
 
-  for ($i = 0; $i < 10; $i++) {
-    if (checkTWID($id . $i)) {
-      $id .= $i;
-      break;
-    }
-  }
+//   for ($i = 0; $i < 10; $i++) {
+//     if (checkTWID($id . $i)) {
+//       $id .= $i;
+//       break;
+//     }
+//   }
 
-  return $id;
-}
+//   return $id;
+// }
 
 
 
