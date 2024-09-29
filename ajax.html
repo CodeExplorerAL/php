@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // 方法一
+        function test1() {                     // 按下按鈕 這個方法被觸發
+            $('#id1').load('ajax.php?max=' + $('#max').val()); // 呼叫檔案ajax.php 
+        }
+        
+        // 方法二
+        function test2() {
+            $.get('ajax.php?max=' + $('#max').val(), function(data,status){       
+                if (status == 'success'){    // 如果成功我就做
+                    $('#id1').html(data);
+                }
+            });              // 帶入參數url('ajax.php?max=' + $('#max').val()) 和 callback回來的function
+        }
+
+        // 方法三
+        function test3(){
+            $.post('ajax.php',
+            {
+                max: $('#max').val()       // 裡面有個屬性max等於:
+            },
+            function(data,status){
+                if (status == 'success'){ 
+                    $('#id1').html(data);
+                }
+            });
+        }
+
+        // 方法四
+        function test4(){
+            $.ajax({
+                url: 'ajax.php',
+                method: 'post',     // 如果這邊是用get，就不用帶下面的data，而是帶?
+                data: {
+                    max: $('#max').val() 
+                },
+                success: function(data){
+                    $('#id1').html(data);
+                }
+            });       // AJAX一招打天下，參數直接給物件就好
+        }
+
+    </script>
+</head>
+
+<body>
+    Lottery: <span id="id1"></span><br>
+    <!-- 配合檔案ajax.php 可以輸入號碼，傳入至該檔案 -->
+    Max: <input type="number" id="max"><br>
+    <!-- Test1~Test4結果一樣，了解它們的使用方式-->
+    <button onclick="test1()">Test1(元素Load招式)</button>
+    <button onclick="test2()">Test2(GET招式)</button>
+    <button onclick="test3()">Test3(POST招式)</button>
+    <button onclick="test4()">Test4(AJAX招式)</button>
+
+
+</body>
+
+</html>
